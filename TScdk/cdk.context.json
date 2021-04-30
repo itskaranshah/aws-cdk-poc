@@ -1,0 +1,40 @@
+{
+  "vpc-provider:account=733985429906:filter.vpc-id=vpc-8e851bf7:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-8e851bf7",
+    "vpcCidrBlock": "10.120.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-8c9ecfd1",
+            "cidr": "10.120.10.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-b15874c9"
+          },
+          {
+            "subnetId": "subnet-5e00eb02",
+            "cidr": "10.120.30.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-c53938b9"
+          },
+          {
+            "subnetId": "subnet-0eea37e2347883f41",
+            "cidr": "10.120.40.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-c53938b9"
+          },
+          {
+            "subnetId": "subnet-6ed4ee0a",
+            "cidr": "10.120.20.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-b15874c9"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=733985429906:filters.image-type.0=machine:filters.name.0=ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*:filters.state.0=available:region=us-east-1": "ami-09d9644acbac71824"
+}

@@ -10,15 +10,17 @@ Pyhton CDK examples: https://github.com/aws-samples/aws-cdk-examples/tree/master
 ## Install SDK
 * `npm install -g aws-cdk`   install node cdk package for TS
 * `pip install aws-cdk`   install node cdk package for TS
+   For every import its best run install commands to avoid errors  
+            `pip install aws-cdk.aws-s3` or `npm install @aws-cdk/aws-s3`
  ## One time
  * `cdk init --language typescript` (npm run watch)
  * `cdk init app --language python`
-    source .venv/bin/activate
-    python -m pip install -r requirements.txt
+    `source .venv/bin/activate`
+    `python3 -m pip install -r requirements.txt`
  * `cdk bootstrap`   create CDKToolket aws bucket (one time)
 ## Include package from the construct example
-* `import * as s3 from '@aws-cdk/aws-s3'`
-* `from aws_cdk import aws_s3 as s3`
+* `import * as s3 from '@aws-cdk/aws-s3'`   #TS
+* `from aws_cdk import aws_s3 as s3`        #Python
 ## Useful commands
  * `npm run build`   compile typescript to js
  * `npm run watch`   watch for changes and compile
@@ -26,3 +28,4 @@ Pyhton CDK examples: https://github.com/aws-samples/aws-cdk-examples/tree/master
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
+ * `cdk destroy CdkWorkshopStack` delete stack [Manually delete S3 buckets]

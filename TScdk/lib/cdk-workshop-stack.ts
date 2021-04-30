@@ -6,18 +6,20 @@ import * as cdk from '@aws-cdk/core';
 import { BlockPublicAccess, BucketEncryption } from '@aws-cdk/aws-s3';
 import * as ec2 from "@aws-cdk/aws-ec2";
 
-require('dotenv').config()
+//dontenv not working as expected
+/*require('dotenv').config()
 
-const config = {
+ const config = {
   env: {
     account: process.env.AWS_ACCOUNT_NUMBER,
     region: process.env.AWS_REGION
   }
-}
+} */
 
 export class CdkWorkshopStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
-    super(scope, id, { ...props, env: config.env });
+    super(scope, id, props );
+//    super(scope, id, { ...props, env: config.env });
 
     const queue = new sqs.Queue(this, 'CdkWorkshopQueue', {
       visibilityTimeout: cdk.Duration.seconds(300)
@@ -47,14 +49,14 @@ export class CdkWorkshopStack extends cdk.Stack {
     });
     awsSG.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22), 'allow public ssh access');
 
-    const ec2instance = new ec2.Instance(this, 'cdk2instance', {
-                        instanceName: 'cdk2instance', keyName: 'Play',
+    const ec2instance = new ec2.Instance(this, 'cdkinstance', {
+                        instanceName: 'cdkinstance', keyName: 'Play',
                         instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO),
                         machineImage: awsAMI, vpc: awsVpc, securityGroup: awsSG, vpcSubnets: {subnetType: ec2.SubnetType.PUBLIC},
     });
 
-    new cdk.CfnOutput(this, 'cdk2instance', {
-      value: ec2instance.instancePublicIp
-    })
+  //  new cdk.CfnOutput(this, 'cdkinstance', {
+  //    value: ec2instance.instancePublicIp
+  //  })
   }
 }
